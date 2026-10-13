@@ -8,12 +8,12 @@ This is the C++ code to calibrate/check if your MAX30102 works!
 
 MAX30105 particleSensor;
 
-const byte Average_Rates = 4; //If you want more averaging in the device, increase this
-byte HeartRates[Average_Rates]; // Array of Heart rates recorded
-byte RatesMeasured = 0; // It is a counter - which counts the number of BPM rates measued
-long TimeLastBeat = 0; // It records the time when the last heartbeat occurred 
+const byte averageRates = 4; //If you want more averaging in the device, increase this
+byte heartRates[averageRates]; // Array of Heart rates recorded
+byte ratesMeasured = 0; // It is a counter - which counts the number of BPM rates measued
+long timeLastBeat = 0; // It records the time when the last heartbeat occurred 
 
-float BeatsPerMinute;
+float beatsPerMinute;
 int beatAvg;
 
 void setup() 
@@ -40,40 +40,40 @@ void setup()
 
 void loop() 
 {
-  long Value_IR = particleSensor.getIR(); //We are defining a local variable
+  long irValue = particleSensor.getIR(); //We are defining a local variable
 
   //Beat Sensing
-  if(checkForBeat(Value_IR) == true)
+  if(checkForBeat(irValue) == true)
   {
-    long change = millis() - TimeLastBeat;
-    TimeLastBeat = millis(); // change isnt 0, it is this beat - previous beat
+    long change = millis() - timeLastBeat;
+    timeLastBeat = millis(); // change isnt 0, it is this beat - previous beat
 
-    BeatsPerMinute = 60 / (change / 1000.0); // Converts it into an actual NUMBER
+    beatsPerMinute = 60 / (change / 1000.0); // Converts it into an actual NUMBER
 
     //Checking if the sensor isnt picking up noise
-    if(BeatsPerMinute < 255 && BeatsPerMinute > 20)
+    if(beatsPerMinute < 255 && beatsPerMinute > 20)
     {
-      HeartRates[RatesMeasured++] = (byte)BeatsPerMinute; //Store the reading in the array with RatesMeasured as a counter
-      RatesMeasured %= Average_Rates; // Like a clock from 1 - 12, it helps RatesMeasured loop back to 0
+      heartRates[ratesMeasured++] = (byte)beatsPerMinute; //Store the reading in the array with ratesMeasured as a counter
+      ratesMeasured %= averageRates; // Like a clock from 1 - 12, it helps ratesMeasured loop back to 0
 
       //Time to calculate the average
       beatAvg = 0;
-      for(byte i = 0; i < Average_Rates; i++)
+      for(byte i = 0; i < averageRates; i++)
       {
-        beatAvg += HeartRates[i];
+        beatAvg += heartRates[i];
       }
-      beatAvg /= Average_Rates;
+      beatAvg /= averageRates;
     }
 
     Serial.print("IR=");
-    Serial.print(Value_IR);
+    Serial.print(irValue);
     Serial.print(", BPM=");
-    Serial.print(BeatsPerMinute);
+    Serial.print(beatsPerMinute);
     Serial.print(", Avg BPM=");
     Serial.println(beatAvg);
   }
 
-  if(Value_IR < 50000)
+  if(irValue < 50000)
   {
     Serial.println("No Finger?");
   }
