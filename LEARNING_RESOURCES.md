@@ -2,7 +2,7 @@
 
 Links for coding the MAX30102 heart rate/SpO2 sensor, the DS18B20 temperature sensor, and the Bluetooth Low Energy (BLE) connection to a phone.
 
-> **Board note:** our worksheet design uses an **ESP32-WROOM-32** (I2C on GPIO21/22, DS18B20 on GPIO4, buttons on GPIO13/14). Most tutorials below use this same board, so their pin numbers match ours. If we end up with a different variant (e.g. an ESP32-S3), the pin numbers change, and the S3 supports **BLE only, not Classic Bluetooth**. Either way, follow **BLE** tutorials, since many App Inventor examples use Classic Bluetooth (`BluetoothSerial`), which wouldn't suit our phone-relay design.
+> **Board note:** our worksheet design uses an **ESP32-WROOM-32** (I2C on GPIO21/22, DS18B20 on GPIO4, buttons on GPIO13/14). Most tutorials below use this same board, so their pin numbers match ours. Follow **BLE** tutorials, since many App Inventor examples use Classic Bluetooth (`BluetoothSerial`), which wouldn't suit our phone-relay design.
 
 ---
 
@@ -19,7 +19,7 @@ Links for coding the MAX30102 heart rate/SpO2 sensor, the DS18B20 temperature se
 
 **Upload tip:** when uploading code, hold the **IO0 (BOOT)** button for 1 to 2 seconds, as the product page advises.
 
-**Practical tip:** 38-pin boards are wide and often cover most of a breadboard, so keep a second breadboard or extra jumper wires handy.
+**Practical tip:** 38-pin boards are wide and often cover most of a breadboard, so keep a second breadboard or extra jumper wires handy. While using the microcontroller, I realized that Female to female wires are not necessary, so i used my female to male wires in order to connect it to my breadboard. However, your ESP32 may turn in weird angles, so i recommend attaching it to a hard surface with screws
 
 ---
 
