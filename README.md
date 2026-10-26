@@ -4,6 +4,9 @@ If you are not a judge, with just some materials, you can find at a hardware sto
 Disclaimer: VitaLoop is a monitoring device; it does not diagnose medical conditions or replace professional medical care. Contact a medical practitioner for advice.
 
 This project has some files which can help you test your hardware to see if they are working properly or not.
-The MAX30102 code is complete excluding the fact that i have to test it and fix the bugs. However this will require me to solder the MAX30102 Headers. BLE testing is in progress.
-I am currently working on the app code
+The MAX30102 code  and DS18B20 codes are complete excluding the fact that fix the  notable bugs. 
+
+However  the BLE testing idea has been scrapped  - for it was very tough.
+I will work on the app code when the project qualifies for level 3
+
 The project is a WORK IN PROGRESS - Kindly note everything isnt complete
