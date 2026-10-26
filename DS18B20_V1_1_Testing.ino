@@ -50,7 +50,7 @@ void loop() {
     Serial.println("Out of plausible range.");
   }
 
-  else if (haveLastTemp && abs(TemperatureC - lastGoodTemp) > maxTemp ) 
+  else if (haveLastTemp && abs(temperatureC - lastGoodTemp) > maxTemp ) 
   {
     Serial.println("Jumped too much, probably noise.");
   }
