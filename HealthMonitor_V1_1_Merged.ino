@@ -15,7 +15,7 @@ MAX30105 particleSensor;
 
 // GPIO where the DS18B20 is connected to
 const int oneWireBus = 4;
-const int ledPinNumber = 2; //This can be changed but avoid GPIO 4(DS18B20) and GPIO 21/22 (I2C protocols for the MAX30102) , v3.1: Alert LED
+const int ledPinNumber = 26; //This can be changed but avoid GPIO 4(DS18B20) and GPIO 21/22 (I2C protocols for the MAX30102) , v3.1: Alert LED
 
 // Setup a oneWire instance to communicate with any OneWire devices
 OneWire oneWire(oneWireBus);
@@ -69,7 +69,7 @@ unsigned long lastTempTime = 0;     // v3.0: when we last read the temperature
 // v3.0: reads and prints the temperature once per second, without freezing the MAX30102
 void updateTemperature()
 {
-  if (millis() - lastTempTime < 1000)
+  if (millis() - lastTempTime < 1000) //Current time - Last reading is less than 1 second
   {
     return;   // not time yet
   }
@@ -110,7 +110,7 @@ void updateTemperature()
     // v3.0: write it in the notebook, wrapping back to box 0 after the last box
     tempNotebook[tempSpot] = temperatureC;
     tempSpot++;
-    tempSpot %= flatSeconds;
+    tempSpot %= flatSeconds; //Resets the notebook
     if (tempCount < flatSeconds)
     {
       tempCount++;
@@ -280,11 +280,11 @@ void loop() {
       bool spo2Alert = (spo2 < 93);
       if (hrAlert || spo2Alert) 
       {
-        digitalWrite(alertLedPin, HIGH);
+        digitalWrite(ledPinNumber, HIGH);
       } 
       else 
       {
-        digitalWrite(alertLedPin, LOW);
+        digitalWrite(ledPinNumber, LOW);
       }
 
       Serial.print("HR=");
