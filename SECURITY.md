@@ -1,21 +1,22 @@
 # Security Policy
 
-## Supported Versions
+## Supported Versions(In the case of everything Non-BLE), the ones which will not be updated whatsoever)
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
 
-| Version | Supported          |
+| Version | Support          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
-
+|**DS18B20**|**Support**|
+| 1.0.x   | :x: |
+| 1.1.x   | :white_check_mark: |
+|**MAX30102**|**Support**|
+|1.0.x|✅|
+|2.0.x|:x:|
+|2.1.x|:x:|
+|2.2.x|✅|
+|**Final Project**|**Support**|
+| 1.0.x   | Limited |
+| 1.1.x   | :white_check_mark: |
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+In order to report a Vulnerability, start a pull request and/or Go to discussions, and post a question in the forum
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
